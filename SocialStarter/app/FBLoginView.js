@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet,Text,View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { SocialIcon } from 'react-native-elements'
 
-/**
-  Example FBLoginView class
-  Please note:
-  - this is not meant to be a full example but highlights what you have access to
-  - If you use a touchable component, you will need to set the onPress event like below
-**/
 class FBLoginView extends Component {
   static contextTypes = {
     isLoggedIn: React.PropTypes.bool,

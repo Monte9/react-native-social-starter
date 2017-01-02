@@ -9,18 +9,28 @@ import {
 
 import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
 
-import FBLoginView from './app/FBLoginView'
+import Photo from './app/Photo'
+import Info from './app/Info'
 
 export default class SocialStarter extends Component {
+  constructor () {
+    super()
+    this.state = {
+      user: null,
+    }
+  }
+
   render() {
     var _this = this;
+    var user = this.state.user;
 
     return (
-      <View style={styles.container}>
-        <FBLogin
-          buttonView={<FBLoginView />}
-          ref={(fbLogin) => { this.fbLogin = fbLogin }}
-          loginBehavior={FBLoginManager.LoginBehaviors.Native}
+      <View style={styles.loginContainer}>
+
+        { user && <Photo user={user} /> }
+        { user && <Info user={user} /> }
+
+        <FBLogin style={{ marginBottom: 10, }}
           permissions={["email","user_friends"]}
           onLogin={function(data){
             console.log("Logged in!");
@@ -52,16 +62,19 @@ export default class SocialStarter extends Component {
             console.log(data);
           }}
         />
+
+        <Text>{ user ? user.token : "N/A user token" }</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
+var styles = StyleSheet.create({
+  loginContainer: {
+    marginTop: 150,
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
