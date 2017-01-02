@@ -11,8 +11,6 @@
 - [Summary](#summary)
 - [FAQ](#faq)
 
-<br />
-
 ## Installation
 
 * [Install React-Native](https://facebook.github.io/react-native/docs/getting-started.html#content)
@@ -23,7 +21,6 @@
 
 * `yarn`
 
-<br />
 
 ## Running the app
 
@@ -33,14 +30,12 @@
 
 * Socialize!
 
-<br />
 
 ## Summary
 
 1. The app is runs on **BOTH** iOS & Android using a single codebase mostly written in Javascript.
 1. WIP
 
-<br />
 
 ## FAQ
 
