@@ -10,6 +10,7 @@
     "react": "15.4.1",
     "react-native": "0.39.2",
     "react-native-elements": "^0.8.2",
+    "react-native-facebook-login": "^1.4.0",
     "react-native-vector-icons": "^3.0.0"
   },
   "devDependencies": {

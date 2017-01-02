@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SocialStarter</string>
+    <string name="fb_app_id">228826757564943</string>
+    <string name="fb_login_protocol_scheme">fb228826757564943</string>
 </resources>

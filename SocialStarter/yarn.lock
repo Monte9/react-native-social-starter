@@ -1941,6 +1941,10 @@ istanbul-reports@^1.0.0:
   dependencies:
     handlebars "^4.0.3"
 
+itypeof@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/itypeof/-/itypeof-1.1.2.tgz#6fb22639dc78a414f594b3d553a5f2c2488fd022"
+
 jest-changed-files@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-17.0.2.tgz#f5657758736996f590a51b87e5c9369d904ba7b7"
@@ -2924,6 +2928,12 @@ react-native-elements@^0.8.2:
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.8.2.tgz#44646d8e9cbcff5b04bd169179c468b558f69830"
   dependencies:
     react-native-tab-navigator "^0.3.3"
+
+react-native-facebook-login@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-facebook-login/-/react-native-facebook-login-1.4.0.tgz#b9ec7b05bd9666d7d697d1ecc71a4c82c77f86c9"
+  dependencies:
+    itypeof "^1.1.2"
 
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"
