@@ -25,9 +25,11 @@ class FBLoginView extends Component {
     return (
       <View>
         <SocialIcon
-          title='Sign In With Facebook'
+          title='Log in with Facebook'
           button
           style={{width: 220}}
+          fontWeight='100'
+          fontStyle={{fontSize: 16}}
           type='facebook'
           onPress={() => {
             if(!this.context.isLoggedIn) {

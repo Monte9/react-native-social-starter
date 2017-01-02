@@ -7,24 +7,49 @@ import {
   Alert
 } from 'react-native';
 
-import {
-  SocialIcon
-} from 'react-native-elements'
+import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
+
+import FBLoginView from './app/FBLoginView'
 
 export default class SocialStarter extends Component {
   render() {
+    var _this = this;
+
     return (
       <View style={styles.container}>
-        <SocialIcon
-          title='Sign In With Facebook'
-          button
-          style={{width: 220}}
-          type='facebook'
-          onPress={() => {
-            Alert.alert('Login', 'Facebook login here.');
+        <FBLogin
+          buttonView={<FBLoginView />}
+          ref={(fbLogin) => { this.fbLogin = fbLogin }}
+          loginBehavior={FBLoginManager.LoginBehaviors.Native}
+          permissions={["email","user_friends"]}
+          onLogin={function(data){
+            console.log("Logged in!");
+            console.log(data);
+            _this.setState({ user : data.credentials });
           }}
-          onLongPress={() => {
-            Alert.alert('Login', 'Long Press Facebook login.');
+          onLogout={function(){
+            console.log("Logged out.");
+            _this.setState({ user : null });
+          }}
+          onLoginFound={function(data){
+            console.log("Existing login found.");
+            console.log(data);
+            _this.setState({ user : data.credentials });
+          }}
+          onLoginNotFound={function(){
+            console.log("No user logged in.");
+            _this.setState({ user : null });
+          }}
+          onError={function(data){
+            console.log("ERROR");
+            console.log(data);
+          }}
+          onCancel={function(){
+            console.log("User cancelled.");
+          }}
+          onPermissionsMissing={function(data){
+            console.log("Check permissions!");
+            console.log(data);
           }}
         />
       </View>
