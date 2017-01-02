@@ -8,18 +8,22 @@ class FBLoginView extends Component {
     isLoggedIn: React.PropTypes.bool,
     login: React.PropTypes.func,
     logout: React.PropTypes.func,
-    props: React.PropTypes.object
+    props: React.PropTypes.object,
   };
 
   constructor(props) {
     super(props);
   }
 
+  facebookDisplayText() {
+    return (!this.context.isLoggedIn ? 'Log in with Facebook' : 'Log out')
+  }
+
   render(){
     return (
       <View>
         <SocialIcon
-          title='Log in with Facebook'
+          title={this.facebookDisplayText()}
           button
           style={{width: 220}}
           fontWeight='100'
