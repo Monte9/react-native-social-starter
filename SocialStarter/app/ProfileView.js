@@ -26,6 +26,8 @@ class ProfileView extends Component {
   componentWillMount() {
     this.fetchProfileImage()
     this.fetchUserDetails()
+
+    this.props.hideTabBar(false)
   }
 
   fetchProfileImage() {

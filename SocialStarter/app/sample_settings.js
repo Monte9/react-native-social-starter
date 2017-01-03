@@ -15,11 +15,6 @@ export default [
     icon: 'fingerprint'
   },
   {
-    title: 'Card Details',
-    route: 'CardDetails',
-    icon: 'lightbulb-outline'
-  },
-  {
     title: 'Updates',
     route: 'Updates',
     icon: 'track-changes'

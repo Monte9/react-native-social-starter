@@ -7,96 +7,75 @@ import {
   Alert,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native';
 
-import { FBLogin, FBLoginManager } from 'react-native-facebook-login';
+import { Tabs, Tab, Icon } from 'react-native-elements'
 
-import ProfileView from './app/ProfileView'
-
-const { width, height } = Dimensions.get("window");
-const background = require("./app/bg.jpg");
+import LoginView from './app/LoginView'
 
 export default class SocialStarter extends Component {
   constructor () {
     super()
     this.state = {
-      user: null,
+      selectedTab: 'profile',
+      hideTabBar: true,
     }
+    this.changeTab = this.changeTab.bind(this)
   }
 
-  onLogout() {
-    var _this = this;
-
-    console.log("Logged out.");
-    _this.setState({ user : null });
+  changeTab (selectedTab) {
+    this.setState({
+      selectedTab
+    })
   }
 
-  render() {
-    var _this = this;
-    var user = this.state.user;
+  hideTabBar(value) {
+    this.setState({
+      hideTabBar: value
+    });
+  }
+
+  render () {
+    const { toggleSideMenu } = this.props
+    const { selectedTab } = this.state
+
+    let tabBarStyle = {};
+    let sceneStyle = {};
+    if (this.state.hideTabBar) {
+      tabBarStyle.height = 0;
+      tabBarStyle.overflow = 'hidden';
+      sceneStyle.paddingBottom = 0;
+    }
 
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.profileViewContainer}>
-          { user && <ProfileView user={user} onLogout={this.onLogout.bind(this)}/> }
-        </ScrollView>
-
-        { !user && <View style={styles.facebookLoginContainer}>
-          <Image source={background} style={styles.bgImage} >
-            <FBLogin
-              style={styles.loginButton}
-              permissions={["email","user_friends"]}
-              onLogin={function(data){
-                console.log("Logged in!");
-                console.log(data);
-                _this.setState({ user : data.credentials });
-              }}
-              onLogout={function(){
-                console.log("Logged out.");
-                _this.setState({ user : null });
-              }}
-              onLoginFound={function(data){
-                console.log("Existing login found.");
-                console.log(data);
-                _this.setState({ user : data.credentials });
-              }}
-              onLoginNotFound={function(){
-                console.log("No user logged in.");
-                _this.setState({ user : null });
-              }}
-              onError={function(data){
-                console.log("ERROR");
-                console.log(data);
-              }}
-              onCancel={function(){
-                console.log("User cancelled.");
-              }}
-              onPermissionsMissing={function(data){
-                console.log("Check permissions!");
-                console.log(data);
-              }}
-            />
-          </Image>
-        </View>}
-      </View>
-    );
+      <Tabs hidesTabTouch tabBarStyle={tabBarStyle} sceneStyle={sceneStyle}>
+        <Tab
+          selectedTitleStyle={{marginTop: -3, marginBottom: 7}}
+          selected={selectedTab === 'feed'}
+          title={selectedTab === 'feed' ? 'FEED' : null}
+          renderIcon={() => <Icon color={'#5e6977'} name='whatshot' size={26} />}
+          renderSelectedIcon={() => <Icon color={'#397af8'} name='whatshot' size={26} />}
+          onPress={() => this.changeTab('feed')}>
+          <Text>Hello World!</Text>
+        </Tab>
+        <Tab
+          tabStyle={selectedTab !== 'profile' && { marginBottom: -6 }}
+          selectedTitleStyle={{marginTop: -3, marginBottom: 7}}
+          selected={selectedTab === 'profile'}
+          title={selectedTab === 'profile' ? 'PROFILE' : null}
+          renderIcon={() => <Icon style={{paddingBottom: 4}} color={'#5e6977'} name='important-devices' size={26} />}
+          renderSelectedIcon={() => <Icon color={'#397af8'} name='important-devices' size={26} />}
+          onPress={() => this.changeTab('profile')}>
+          <LoginView hideTabBar={this.hideTabBar.bind(this)} />
+        </Tab>
+      </Tabs>
+    )
   }
 }
 
-var styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#e1e8ee'
-  },
-  bgImage: {
-    width,
-    height,
-  },
-  loginButton: {
-    position: 'absolute',
-    left: width / 2 - 80,
-    top: height / 2 - 10,
-  }
-});
+styles = StyleSheet.create({
+})
 
 AppRegistry.registerComponent('SocialStarter', () => SocialStarter);
