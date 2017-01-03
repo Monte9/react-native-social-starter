@@ -9,6 +9,7 @@
 - [Installation](#installation)
 - [Running the app](#running-the-app)
 - [Summary](#summary)
+- [TODO](#todo)
 - [FAQ](#faq)
 
 ## Installation
@@ -34,7 +35,14 @@
 ## Summary
 
 1. The app is runs on **BOTH** iOS & Android using a single codebase mostly written in Javascript.
-1. WIP
+1. Login using Facebook SDK working on iOS & Android
+
+
+## TODO
+
+1. Add Twitter Login
+  - https://github.com/GoldenOwlAsia/react-native-twitter-signin
+  - https://apps.twitter.com/app/13265317
 
 
 ## FAQ
