@@ -38,6 +38,8 @@
 
 1. The app is runs on **BOTH** iOS & Android using a single codebase mostly written in Javascript.
 1. Login using Facebook SDK working on iOS & Android
+1. Feed Tab View displays a feed of social activity
+1. Profile Tab View displays user profile info & log out
 
 
 ## TODO
