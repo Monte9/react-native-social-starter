@@ -1,6 +1,6 @@
 # React Native Social Starter [![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/monte9/react-native-social-starter/blob/master/LICENSE)
 
-<img src="screenshots/banner.png" width="700" height="501"><br />
+<img src="screenshots/banner.png" width="880" height="629.8"><br />
 
 **Social Starter app that uses Twitter & Facebook login + Displays User Feed & Profile views**
 
