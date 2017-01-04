@@ -11,6 +11,7 @@
 - [Installation](#installation)
 - [Running the app](#running-the-app)
 - [Summary](#summary)
+- [Libraries](#libraries)
 - [TODO](#todo)
 - [FAQ](#faq)
 
@@ -41,6 +42,12 @@
 1. Feed Tab View displays a feed of social activity
 1. Profile Tab View displays user profile info & log out
 
+
+## Libraries
+
+- [React Native Facebook Login](https://github.com/magus/react-native-facebook-login)
+- [React Native Elements](https://github.com/react-native-community/react-native-elements)
+- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 
 ## TODO
 
