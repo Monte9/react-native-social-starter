@@ -2,94 +2,92 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
   View,
   Alert,
   Image,
   Dimensions,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 
+import { Card, Text, Button } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+
+const { width, height } = Dimensions.get("window");
+
+import posts from './sample_posts'
+
 class FeedView extends Component {
-  constructor () {
-    super()
-    this.state = {
-      user: null,
-    }
-  }
-
-  onLogout() {
-    var _this = this;
-
-    console.log("Logged out.");
-    _this.setState({ user : null });
-  }
-
   render() {
-    var _this = this;
-    var user = this.state.user;
-
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.profileViewContainer}>
-          { user && <ProfileView user={user} onLogout={this.onLogout.bind(this)}/> }
+      <View style={{flex: 1}}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Social Feed</Text>
+        </View>
+        <ScrollView style={{backgroundColor: '#e1e8ee', paddingBottom: 100}}>
+          <View style={styles.container}>
+            {
+              posts.map((post, index) => {
+                return (
+                  <TouchableOpacity
+                    onPress={() => console.log("pressed")}
+                    activeOpacity={1}
+                    key={index}>
+                    <Card
+                      title={post.title}
+                      image={{uri: post.post_uri}}
+                      containerStyle={{backgroundColor: '#bdc6cf'}}
+                      onPress={() => console.log("pressed")}>
+                      <Text style={{marginBottom: 10}}>
+                        {post.post_text}
+                      </Text>
+                      <Button
+                        icon={{name: 'eye', type: 'font-awesome', color:'white'}}
+                        backgroundColor={'#6296f9'}
+                        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                        title='Explore'
+                        onPress={() => console.log("pressed")}/>
+                    </Card>
+                  </TouchableOpacity>
+                )
+              })
+            }
+          </View>
         </ScrollView>
-
-        { !user && <View style={styles.facebookLoginContainer}>
-          <Image source={background} style={styles.bgImage} >
-            <FBLogin
-              style={styles.loginButton}
-              permissions={["email","user_friends"]}
-              onLogin={function(data){
-                console.log("Logged in!");
-                console.log(data);
-                _this.setState({ user : data.credentials });
-              }}
-              onLogout={function(){
-                console.log("Logged out.");
-                _this.setState({ user : null });
-              }}
-              onLoginFound={function(data){
-                console.log("Existing login found.");
-                console.log(data);
-                _this.setState({ user : data.credentials });
-              }}
-              onLoginNotFound={function(){
-                console.log("No user logged in.");
-                _this.setState({ user : null });
-              }}
-              onError={function(data){
-                console.log("ERROR");
-                console.log(data);
-              }}
-              onCancel={function(){
-                console.log("User cancelled.");
-              }}
-              onPermissionsMissing={function(data){
-                console.log("Check permissions!");
-                console.log(data);
-              }}
-            />
-          </Image>
-        </View>}
       </View>
     );
   }
 }
 
-var styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#e1e8ee'
+const styles = {
+  user: {
+    flexDirection: 'row',
+    marginBottom: 6
   },
-  bgImage: {
-    width,
-    height,
+  image: {
+    width: 30,
+    height: 30,
+    marginRight: 10
   },
-  loginButton: {
-    position: 'absolute',
-    left: width / 2 - 80,
-    top: height / 2 - 10,
+  name: {
+    fontSize: 16,
+    marginTop: 5
+  },
+  header: {
+    flex: 0.1,
+    backgroundColor: 'white',
+    width: width,
+    height: 64
+  },
+  headerTitle: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    color: '#6296f9',
+    fontWeight: 'bold',
+    paddingTop: 20,
+    fontSize: 18
   }
-});
+}
 
 export default FeedView

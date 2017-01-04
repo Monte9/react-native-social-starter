@@ -14,6 +14,7 @@ import {
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
 import LoginView from './app/LoginView'
+import FeedView from './app/FeedView'
 
 export default class SocialStarter extends Component {
   constructor () {
@@ -56,9 +57,9 @@ export default class SocialStarter extends Component {
           selected={selectedTab === 'feed'}
           title={selectedTab === 'feed' ? 'FEED' : null}
           renderIcon={() => <Icon color={'#5e6977'} name='whatshot' size={26} />}
-          renderSelectedIcon={() => <Icon color={'#397af8'} name='whatshot' size={26} />}
+          renderSelectedIcon={() => <Icon color={'#6296f9'} name='whatshot' size={26} />}
           onPress={() => this.changeTab('feed')}>
-          <Text>Hello World!</Text>
+          <FeedView />
         </Tab>
         <Tab
           tabStyle={selectedTab !== 'profile' && { marginBottom: -6 }}
@@ -66,7 +67,7 @@ export default class SocialStarter extends Component {
           selected={selectedTab === 'profile'}
           title={selectedTab === 'profile' ? 'PROFILE' : null}
           renderIcon={() => <Icon style={{paddingBottom: 4}} color={'#5e6977'} name='important-devices' size={26} />}
-          renderSelectedIcon={() => <Icon color={'#397af8'} name='important-devices' size={26} />}
+          renderSelectedIcon={() => <Icon color={'#6296f9'} name='important-devices' size={26} />}
           onPress={() => this.changeTab('profile')}>
           <LoginView hideTabBar={this.hideTabBar.bind(this)} />
         </Tab>
